@@ -1,12 +1,12 @@
 <template>
   <NuxtLayout name="auth" title="Sign in">
     <template #title>
-      Sign in
+      {{ $t('headings.login') }}
     </template>
     <form action="#" method="POST" class="space-y-6">
       <div>
         <label for="email" class="block text-sm font-medium text-gray-700">
-          Email address
+          {{ $t('labels.email') }}
         </label>
         <div class="mt-1">
           <input
@@ -20,7 +20,9 @@
       </div>
 
       <div class="space-y-1">
-        <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
+        <label for="password" class="block text-sm font-medium text-gray-700">
+          {{ $t('labels.password') }}
+        </label>
         <div class="mt-1">
           <input
             id="password"
@@ -34,12 +36,14 @@
 
       <div class="flex justify-end">
         <div class="text-sm">
-          <a href="#" class="font-medium text-primary hover:text-primary-hover"> Forgot your password? </a>
+          <a href="#" class="font-medium text-primary hover:text-primary-hover">
+            {{ $t('links.forgotPassword') }}
+          </a>
         </div>
       </div>
 
       <div>
-        <AppButton type="submit" text="Sign in" />
+        <AppButton type="submit" :text="$t('buttons.login')" />
       </div>
     </form>
   </NuxtLayout>

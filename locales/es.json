@@ -1,0 +1,24 @@
+{
+  "buttons": {
+    "login": "Acceso"
+  },
+  "headings": {
+    "login": "Acceso"
+  },
+  "labels": {
+    "email": "Correo electrónico",
+    "password": "Clave"
+  },
+  "links": {
+    "forgotPassword": "¿Olvidaste tu contraseña?"
+  },
+  "navigation": {
+    "sidebar": {
+      "courses": "Cursos",
+      "home": "La Casa"
+    },
+    "user": {
+      "logout": "Cerrar sesión"
+    }
+  }
+}
