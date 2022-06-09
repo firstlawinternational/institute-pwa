@@ -14,7 +14,9 @@ module.exports = {
   ],
   globals: {
     computed: 'readonly',
+    defineNuxtPlugin: 'readonly',
     defineProps: 'readonly',
+    useNuxtApp: 'readonly',
     useRuntimeConfig: 'readonly',
   },
   // add your custom rules here

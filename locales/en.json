@@ -1,0 +1,24 @@
+{
+  "buttons": {
+    "login": "Sign in"
+  },
+  "headings": {
+    "login": "Sign in"
+  },
+  "labels": {
+    "email": "Email address",
+    "password": "Password"
+  },
+  "links": {
+    "forgotPassword": "Forgot your password?"
+  },
+  "navigation": {
+    "sidebar": {
+      "courses": "Courses",
+      "home": "Home"
+    },
+    "user": {
+      "logout": "Sign out"
+    }
+  }
+}

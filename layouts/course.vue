@@ -4,7 +4,7 @@
     <div class="hidden w-28 bg-primary overflow-y-auto md:block">
       <div class="w-full py-6 flex flex-col items-center">
         <div class="flex-shrink-0 flex items-center">
-          <img class="w-full h-auto px-4 text-white" :src="logo" alt="Workflow">
+          <img class="w-full h-auto px-4" :src="logo" alt="Workflow">
         </div>
         <div class="flex-1 mt-6 w-full px-2 space-y-1">
           <a
@@ -164,7 +164,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import {
   Dialog,
@@ -177,35 +177,42 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import {
-  CogIcon,
-  CollectionIcon,
+  AcademicCapIcon,
   HomeIcon,
   MenuAlt2Icon,
-  PhotographIcon,
   PlusSmIcon,
-  UserGroupIcon,
-  ViewGridIcon,
   XIcon,
 } from '@heroicons/vue/outline'
 import { SearchIcon } from '@heroicons/vue/solid'
+import { useI18n } from 'vue-i18n'
 
 const config = useRuntimeConfig()
 const logo = computed(() => config.images.logoLight)
-
-const sidebarNavigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: false },
-  { name: 'All Files', href: '#', icon: ViewGridIcon, current: false },
-  { name: 'Photos', href: '#', icon: PhotographIcon, current: true },
-  { name: 'Shared', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Albums', href: '#', icon: CollectionIcon, current: false },
-  { name: 'Settings', href: '#', icon: CogIcon, current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
+const { t } = useI18n({ useScope: 'global' })
 
 const mobileMenuOpen = ref(false)
+
+const sidebarNavigation = [
+  {
+    name: t('navigation.sidebar.home'),
+    href: '#',
+    icon: HomeIcon,
+    current: true,
+  },
+  {
+    name: t('navigation.sidebar.courses'),
+    href: '#',
+    icon: AcademicCapIcon,
+    current: false,
+  },
+]
+
+const userNavigation = [
+  {
+    name: t('navigation.user.logout'),
+    href: '#',
+  },
+]
 </script>
 
 <style>
@@ -214,5 +221,4 @@ const mobileMenuOpen = ref(false)
   #__nuxt {
     @apply h-full bg-gray-50 overflow-hidden;
   }
-
 </style>
