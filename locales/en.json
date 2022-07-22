@@ -1,6 +1,7 @@
 {
   "buttons": {
-    "login": "Sign in"
+    "login": "Sign in",
+    "logout": "Sign out"
   },
   "headings": {
     "login": "Sign in"

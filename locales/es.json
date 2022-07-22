@@ -1,6 +1,7 @@
 {
   "buttons": {
-    "login": "Acceso"
+    "login": "Acceso",
+    "logout": "Desconectar"
   },
   "headings": {
     "login": "Acceso"

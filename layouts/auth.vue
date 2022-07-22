@@ -24,9 +24,8 @@
 
 <script setup>
 const config = useRuntimeConfig()
-
-const image = computed(() => config.images.auth)
-const logo = computed(() => config.images.logo)
+const image = computed(() => config.public.app.images.auth)
+const logo = computed(() => config.public.app.images.logo)
 </script>
 
 <style>
