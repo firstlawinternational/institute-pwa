@@ -187,7 +187,7 @@ import { SearchIcon } from '@heroicons/vue/solid'
 import { useI18n } from 'vue-i18n'
 
 const config = useRuntimeConfig()
-const logo = computed(() => config.images.logoLight)
+const logo = computed(() => config.public.app.images.logoLight)
 const { t } = useI18n({ useScope: 'global' })
 
 const mobileMenuOpen = ref(false)
