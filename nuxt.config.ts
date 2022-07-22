@@ -15,20 +15,10 @@ export default defineNuxtConfig({
     ],
   ],
   modules: [
-    [
-      "@nuxtjs/axios", {
-        proxyHeaders: false,
-      }
-    ],
     // '@nuxtjs/auth-next',
     '@nuxtjs/proxy',
     '@nuxtjs/tailwindcss'
   ],
-  publicRuntimeConfig: {
-    axios: {
-      baseURL: 'http://localhost:80',
-    },
-  },
   runtimeConfig: {
     public: {
       app: appConfig,
