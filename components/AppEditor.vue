@@ -4,6 +4,8 @@ import Bubble from '@tiptap/extension-bubble-menu'
 import StarterKit from '@tiptap/starter-kit'
 import { defineEmits, onBeforeUnmount, watch } from 'vue'
 
+const id = Math.random().toString(36).slice(2, 7)
+
 const props = defineProps({
   modelValue: {
     type: String,
@@ -13,11 +15,36 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
+const bubbleItems = [
+  {
+    key: 'bold',
+    icon: 'fa-solid fa-bold',
+    click: () => {
+      editor.value.chain().focus().toggleBold().run()
+    },
+  },
+  {
+    key: 'italic',
+    icon: 'fa-solid fa-italic',
+    click: () => editor.value.chain().focus().toggleItalic().run(),
+  },
+  {
+    key: 'strike',
+    icon: 'fa-solid fa-strikethrough',
+    click: () => editor.value.chain().focus().toggleStrike().run(),
+  },
+]
+
 const editor = useEditor({
   content: props.modelValue,
+  editorProps: {
+    attributes: {
+      class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-xl m-5 focus:outline-none',
+    },
+  },
   extensions: [
     Bubble.configure({
-      element: document.querySelector('.menu'),
+      element: document.getElementById(id),
     }),
     StarterKit,
   ],
@@ -26,26 +53,35 @@ const editor = useEditor({
   },
 })
 
-onBeforeUnmount(() => editor.destroy())
+onBeforeUnmount(() => editor.value.destroy())
 
 watch(() => props.modelValue, (value) => {
   if (value === editor.value.getHTML()) return
-  editor.value?.commands.setContent(value, false)
+  editor.value.commands.setContent(value, false)
 })
 
 </script>
 
 <template>
   <div>
-    <bubble-menu v-if="editor" class="menu" :editor="editor" :tippy-options="{ duration: 100 }">
-      <button :class="{ 'is-active': editor.isActive('bold') }" @click="editor.chain().focus().toggleBold().run()">
-        bold
-      </button>
-      <button :class="{ 'is-active': editor.isActive('italic') }" @click="editor.chain().focus().toggleItalic().run()">
-        italic
-      </button>
-      <button :class="{ 'is-active': editor.isActive('strike') }" @click="editor.chain().focus().toggleStrike().run()">
-        strike
+    <bubble-menu
+      v-if="editor"
+      :id="id"
+      class="flex bg-white border border-black rounded-md shadow"
+      :editor="editor"
+      :tippy-options="{ duration: 100 }"
+    >
+      <button
+        v-for="item in bubbleItems"
+        :key="item.key"
+        class="px-2 py-1 first:rounded-l last:rounded-r"
+        :class="{
+          'bg-primary text-white hover:bg-primary hover:bg-opacity-90': editor.isActive(item.key),
+          'hover:bg-gray-100': !editor.isActive(item.key),
+        }"
+        @click="item.click"
+      >
+        <fa-icon :icon="item.icon" />
       </button>
     </bubble-menu>
     <editor-content :editor="editor" />
