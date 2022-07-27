@@ -2,7 +2,7 @@
 import { BubbleMenu, EditorContent, useEditor } from '@tiptap/vue-3'
 import Bubble from '@tiptap/extension-bubble-menu'
 import StarterKit from '@tiptap/starter-kit'
-import { defineEmits, onBeforeUnmount, watch } from 'vue'
+import { onBeforeUnmount, watch } from 'vue'
 
 const id = Math.random().toString(36).slice(2, 7)
 
