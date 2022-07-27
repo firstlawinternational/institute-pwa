@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { BubbleMenu, EditorContent, useEditor } from '@tiptap/vue-3'
 import Bubble from '@tiptap/extension-bubble-menu'
 import StarterKit from '@tiptap/starter-kit'
@@ -19,19 +19,17 @@ const bubbleItems = [
   {
     key: 'bold',
     icon: 'fa-solid fa-bold',
-    click: () => {
-      editor.value.chain().focus().toggleBold().run()
-    },
+    click: () => editor?.value?.chain().focus().toggleBold().run(),
   },
   {
     key: 'italic',
     icon: 'fa-solid fa-italic',
-    click: () => editor.value.chain().focus().toggleItalic().run(),
+    click: () => editor?.value?.chain().focus().toggleItalic().run(),
   },
   {
     key: 'strike',
     icon: 'fa-solid fa-strikethrough',
-    click: () => editor.value.chain().focus().toggleStrike().run(),
+    click: () => editor?.value?.chain().focus().toggleStrike().run(),
   },
 ]
 
@@ -49,15 +47,15 @@ const editor = useEditor({
     StarterKit,
   ],
   onUpdate: () => {
-    emit('update:modelValue', editor.value.getHTML())
+    emit('update:modelValue', editor?.value?.getHTML())
   },
 })
 
-onBeforeUnmount(() => editor.value.destroy())
+onBeforeUnmount(() => editor?.value?.destroy())
 
 watch(() => props.modelValue, (value) => {
-  if (value === editor.value.getHTML()) return
-  editor.value.commands.setContent(value, false)
+  if (value === editor?.value?.getHTML()) return
+  editor?.value?.commands.setContent(value, false)
 })
 
 </script>
@@ -76,8 +74,8 @@ watch(() => props.modelValue, (value) => {
         :key="item.key"
         class="px-2 py-1 first:rounded-l last:rounded-r"
         :class="{
-          'bg-primary text-white hover:bg-primary hover:bg-opacity-90': editor.isActive(item.key),
-          'hover:bg-gray-100': !editor.isActive(item.key),
+          'bg-primary text-white hover:bg-primary hover:bg-opacity-90': editor?.isActive(item.key),
+          'hover:bg-gray-100': !editor?.isActive(item.key),
         }"
         @click="item.click"
       >
