@@ -4,6 +4,7 @@ import Bubble from '@tiptap/extension-bubble-menu'
 import Floating from '@tiptap/extension-floating-menu'
 import StarterKit from '@tiptap/starter-kit'
 import { onBeforeUnmount, watch } from 'vue'
+import 'tippy.js/animations/shift-toward.css'
 
 const bubbleId = Math.random().toString(36).slice(2, 7)
 const floatingId = Math.random().toString(36).slice(2, 7)
@@ -94,7 +95,10 @@ watch(() => props.modelValue, (value) => {
       :id="bubbleId"
       class="flex bg-white border border-black rounded-md shadow"
       :editor="editor"
-      :tippy-options="{ duration: 100 }"
+      :tippy-options="{
+        duration: 200,
+        animation: 'shift-toward',
+      }"
     >
       <button
         v-for="item in bubbleItems"
@@ -113,7 +117,10 @@ watch(() => props.modelValue, (value) => {
       v-if="editor"
       class="flex bg-white border border-black rounded-md shadow"
       :editor="editor"
-      :tippy-options="{ duration: 100 }"
+      :tippy-options="{
+        duration: 200,
+        animation: 'shift-toward',
+      }"
     >
       <button
         v-for="item in floatingItems"

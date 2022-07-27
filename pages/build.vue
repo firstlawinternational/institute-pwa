@@ -18,7 +18,7 @@ const content = ref(`<h2>
 </script>
 
 <template>
-  <div>
+  <NuxtLayout name="course">
     <AppEditor v-model="content" />
-  </div>
+  </NuxtLayout>
 </template>
