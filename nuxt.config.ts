@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   modules: [
     // '@nuxtjs/auth-next',
     '@nuxtjs/proxy',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
   runtimeConfig: {
     public: {
@@ -26,6 +26,6 @@ export default defineNuxtConfig({
   },
   ssr: false,
   typescript: {
-    strict: true
+    strict: true,
   },
 })
